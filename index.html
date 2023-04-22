@@ -56,7 +56,6 @@ function createId(){
 function openId(){
   let idn=document.getElementById('inputid').value;
   idn="id"+idn;
-  console.log(idn);
   fetch('https://getpantry.cloud/apiv1/pantry/f6f6a0ff-9224-4db6-ba5b-09a963caf751/basket/newBasket28', {
    headers: {
       'Accept': 'application/json'
@@ -73,7 +72,7 @@ function copy() {
     navigator.clipboard.writeText(element);
   
 
-  alert("Textul a fost copiat!😊");
+  alert("Textul a fost copiat!😊📋");
 }
 </script>
 
