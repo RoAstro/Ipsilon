@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/7288/7288535.png">
+    <title>Ipsilon</title>
+</head>
+<body style="  background-image: url('https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_960_720.jpg');background-repeat: no-repeat;
+background-attachment: fixed;  
+background-size: cover;">
+    <center>
+        <img src="https://cdn-icons-png.flaticon.com/512/7288/7288535.png" style="width: 50px;height: 50px;color: white;" alt="" srcset="">
+    <h1 style="font-size: 1000; font-family: Verdana, Geneva, Tahoma, sans-serif; color: white;">Ipsilon</h1>
+    <h2 style="color: white;">Creeaza un ID</h2>
+
+    <textarea  id="inputxt"></textarea>
+    <input type="submit" onClick="createId()" >
+   
+    <h2 style="color: white;">Deschide un ID</h2>
+    <input  type="number"  id="inputid" min="1000" max="9999">
+<input type="submit" onclick="openId()"><br><br>
+<button onclick="copy()">Copiaza</button><br><br><br><br><br><br><br><br><br>
+<button style="  position: absolute;top: 8px;right: 16px;" onclick="rep()">Fara fundal</button>
+<div style="border-style: solid; border-color: aliceblue">
+<p style="color: white;" id="res">Aici va aparea textul sau ID-ul...</p>
+</div>
+</center>
+
+<script>
+
+function rep(){
+    document.body.style.backgroundImage="url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg')"
+}
+
+
+
+function createId(){
+    var id = Math.floor(Math.random() * (9999 - 1000 ) ) + 1000;
+    
+ var itxt = document.getElementById("inputxt").value;
+ document.getElementById("res").innerHTML= 'ID-ul este:   '+id;
+ 
+  id='id'+id;
+  fetch('https://getpantry.cloud/apiv1/pantry/f6f6a0ff-9224-4db6-ba5b-09a963caf751/basket/newBasket28', {
+    method: 'PUT',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ [id]: itxt})
+})  
+   
+}
+function openId(){
+  let idn=document.getElementById('inputid').value;
+  idn="id"+idn;
+  console.log(idn);
+  fetch('https://getpantry.cloud/apiv1/pantry/f6f6a0ff-9224-4db6-ba5b-09a963caf751/basket/newBasket28', {
+   headers: {
+      'Accept': 'application/json'
+   }
+})
+   .then(response => response.text())
+   .then(text => document.getElementById('res').innerHTML=JSON.parse(text)[idn])
+
+}
+function copy() {
+
+    let element =document.getElementById('res').innerHTML;
+   
+    navigator.clipboard.writeText(element);
+  
+
+  alert("Textul a fost copiat!😊");
+}
+</script>
+
+
+</body>
+</html>
