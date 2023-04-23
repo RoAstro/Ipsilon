@@ -36,27 +36,7 @@ background-size: cover;">
 <input type="submit" onclick="openId()"><br><br>
 <button onclick="copy()">Copiaza</button><br><br><br>
 <button style="  position: absolute;top: 8px;right: 16px;" onclick="rep()">Doar Text</button>
-          <button style="  position: absolute;top: 8px;left: 16px;" onclick="
-   document.getElementById("res").innerHTML= '
-  Ipsilon este o paltforma User Friendly de Cloud Storage.
-  I.Cum folosesc -Creeaza un ID- ?
-   1.Introduceti text in casuta de text din rubrica -Creeaza un ID- (Puteti mari spatiul apasand pe coltul dreapta-jos al casutei si tragand in directia dorita.)
-   2.Cand ati terminat de scris, apasati butonul -Trimite- aflat in rubrica -Creeaza un ID-. In caseta de text de unde cititi aceste instructiuni va aparea ID-ul textului introdus.
-   3.Asta inseamna ca textul a fost salvat pe server.
-   
-   II.Cum folosesc -Deschide un ID- ?
-     1.Introduceti ID-ul in casuta din rubrica -Deschide un ID-.
-     2.Textul pe care l-ati salvat mai devreme va aparea in caseta de text de unde cititi aceste instructiuni.
-     
-   III.Butonul -Copiaza- : Apasand acel buton, vi se va copia in CLIPBOARD📋 ce se afla in acel moment (ID-ul sau textul salvat) in caseta de text din care cititi aceste instructiuni. 
-    
-   IV.Butonul -Doar text- (coltul dreapta-sus): Apasand acel buton, fundalul se va transforma in negru si comenzile mentionate mai sus vor disparea lasand loc textului.
-    Aceasta actiune poate fi reversata numai daca reincarcati pagina.
-    
-   V.Cum folosesc -Marime-?
-      1.Introduceti marimea fontului textului dorita  in caseta -Marime-. Nu este nevoie sa mai apasati un alt buton, marimea fiind schimbata pe masura ce tastati.'
-      
-                                                                             ">❔❔❔</button>
+          <button style="  position: absolute;top: 8px;left: 16px;" onclick="htd()">❔❔❔</button>
 </div>
 <div style="border-style: solid; border-color: aliceblue">
 <p style="color: white;" id="res">Aici va aparea textul sau ID-ul...</p>
@@ -116,6 +96,10 @@ function copy() {
 function mar(){
     marn=document.getElementById("mar").value;
     document.getElementById("res").style.fontSize = marn+"px";
+}
+function htd(){
+  xsd= "Ipsilon este o paltforma User Friendly de Cloud Storage. <br>I.Cum folosesc -Creeaza un ID- ? <br> 1.Introduceti text in casuta de text din rubrica -Creeaza un ID- (Puteti mari spatiul apasand pe coltul dreapta-jos al casutei si tragand in directia dorita.)<br> 2.Cand ati terminat de scris, apasati butonul -Trimite- aflat in rubrica -Creeaza un ID-. In caseta de text de unde cititi aceste instructiuni va aparea ID-ul textului introdus. <br>3.Asta inseamna ca textul a fost salvat pe server.<br> II.Cum folosesc -Deschide un ID- ?<br>  1.Introduceti ID-ul in casuta din rubrica -Deschide un ID-.<br> 2.Textul pe care l-ati salvat mai devreme va aparea in caseta de text de unde cititi aceste instructiuni.<br>III.Butonul -Copiaza- : Apasand acel buton, vi se va copia in CLIPBOARD📋 ce se afla in acel moment (ID-ul sau textul salvat) in caseta de text din care cititi aceste instructiuni. <br>IV.Butonul -Doar text- (coltul dreapta-sus): Apasand acel buton, fundalul se va transforma in negru si comenzile mentionate mai sus vor disparea lasand loc textului.<br> Aceasta actiune poate fi reversata numai daca reincarcati pagina.<br>V.Cum folosesc -Marime-?<br> 1.Introduceti marimea fontului textului dorita  in caseta -Marime-. Nu este nevoie sa mai apasati un alt buton, marimea fiind schimbata pe masura ce tastati."
+  document.getElementById("res").innerHTML= xsd;
 }
 </script>
 
