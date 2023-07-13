@@ -74,8 +74,7 @@ function createId(){
  document.getElementById("res").innerHTML= 'ID-ul este:   '+id;
 
 
- localStorage.setItem("IdHistory", ih);
- document.getElementById("idhist").innerHTML="Istoricul ID-urilor create de dvs: "+ih;
+ 
   id='id'+id;
   fetch('https://getpantry.cloud/apiv1/pantry/f6f6a0ff-9224-4db6-ba5b-09a963caf751/basket/newBasket28', {
     method: 'PUT',
