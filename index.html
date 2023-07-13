@@ -72,8 +72,6 @@ function createId(){
     
  var itxt = document.getElementById("inputxt").value;
  document.getElementById("res").innerHTML= 'ID-ul este:   '+id;
- localStorage.setItem("IdHistory", "blank");
- const ih=localStorage.getItem("IdHistory")+', '+id;
 
 
  localStorage.setItem("IdHistory", ih);
