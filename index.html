@@ -36,7 +36,8 @@ background-size: cover;">
     <input style="border-style: solid; border-radius: 10px;border-color: rgb(0, 0, 0)" type="number"  id="inputid" min="1000" max="9999">
 <input type="submit" style="border-style: solid; border-radius: 5px;border-color: rgb(0, 0, 0);" onclick="openId()"><br><br>
 <button style="border-style: solid;border-radius: 10px;"onclick="copy()">Copiaza</button><br><br>
-<label style="color: white;">Previzualizare:</label><input type="radio" name="" id="rad" ><br><br>
+<label style="color: white;">Previzualizare:</label><input type="radio" name="" id="rad" ><br>
+<br>
 <button style="  position: absolute;top: 8px;right: 16px;" onclick="rep()">Doar Text</button>
           <button style="position: absolute;top: 8px;left: 16px;" onclick="htd()">❓❓❓</button>
 </div>
@@ -45,11 +46,17 @@ background-size: cover;">
 <p style="color: white;" id="res">Aici va aparea textul, previzualizarea textului introdus sau ID-ul...</p>
 
 </div>
-<br>
-<p style="color: white;">&copy Simion Tudor</p>
 </center>
 
 <script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const paraId = urlParams.get('id');
+  if(paraId){
+    document.getElementById('inputid').value=paraId;
+    openId()
+  }
+
 
 function rep(){
     document.body.style.backgroundImage="url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg')"
@@ -65,7 +72,12 @@ function createId(){
     
  var itxt = document.getElementById("inputxt").value;
  document.getElementById("res").innerHTML= 'ID-ul este:   '+id;
- 
+ localStorage.setItem("IdHistory", "blank");
+ const ih=localStorage.getItem("IdHistory")+', '+id;
+
+
+ localStorage.setItem("IdHistory", ih);
+ document.getElementById("idhist").innerHTML="Istoricul ID-urilor create de dvs: "+ih;
   id='id'+id;
   fetch('https://getpantry.cloud/apiv1/pantry/f6f6a0ff-9224-4db6-ba5b-09a963caf751/basket/newBasket28', {
     method: 'PUT',
@@ -92,10 +104,12 @@ function openId(){
 }
 function copy() {
 
-    let element =document.getElementById('res').innerHTML;
+   let element =document.getElementById('res').innerHTML;
    
-    navigator.clipboard.writeText(element);
+   navigator.clipboard.writeText(element);
   
+
+ 
 
   alert("Textul a fost copiat!😊📋");
 }
@@ -104,7 +118,7 @@ function mar(){
     document.getElementById("res").style.fontSize = marn+"px";
 }
 function htd(){
-  xsd= "Ipsilon este o paltforma User Friendly de Cloud Storage. <br>I.Cum folosesc -Creeaza un ID- ? <br> 1.Introduceti text in casuta de text din rubrica -Creeaza un ID- (Puteti mari spatiul apasand pe coltul dreapta-jos al casutei si tragand in directia dorita.)<br> 2.Cand ati terminat de scris, apasati butonul -Trimite- aflat in rubrica -Creeaza un ID-. In caseta de text de unde cititi aceste instructiuni va aparea ID-ul textului introdus. <br>3.Asta inseamna ca textul a fost salvat pe server.<br> II.Cum folosesc -Deschide un ID- ?<br>  1.Introduceti ID-ul in casuta din rubrica -Deschide un ID-.<br> 2.Textul pe care l-ati salvat mai devreme va aparea in caseta de text de unde cititi aceste instructiuni.<br>III.Butonul -Copiaza- : Apasand acel buton, vi se va copia in CLIPBOARD📋 ce se afla in acel moment (ID-ul sau textul salvat) in caseta de text din care cititi aceste instructiuni. <br>IV.-Previzualizare-: Daca selectati acea casuta, textul introdus va aparea in rubrica de unde cititi aceste instructiuni. Aceasta functie este utila atunci cand introduceti TAG-uri HTML si doriti o previzualizare a ce va aparea la final.<br>V.Butonul -Doar text- (coltul dreapta-sus): Apasand acel buton, fundalul se va transforma in negru si comenzile mentionate mai sus vor disparea lasand loc textului.<br> Aceasta actiune poate fi reversata numai daca reincarcati pagina.<br>VI.Cum folosesc -Marime-?<br> 1.Introduceti marimea fontului textului dorita  in caseta -Marime-. Nu este nevoie sa mai apasati un alt buton, marimea fiind schimbata pe masura ce tastati."
+  xsd= "Ipsilon este o paltforma User Friendly de Cloud Storage. <br>I.Cum folosesc -Creeaza un ID- ? <br> 1.Introduceti text in casuta de text din rubrica -Creeaza un ID- (Puteti mari spatiul apasand pe coltul dreapta-jos al casutei si tragand in directia dorita.)<br> 2.Cand ati terminat de scris, apasati butonul -Trimite- aflat in rubrica -Creeaza un ID-. In caseta de text de unde cititi aceste instructiuni va aparea ID-ul textului introdus. <br>3.Asta inseamna ca textul a fost salvat pe server.<br> II.Cum folosesc -Deschide un ID- ?<br>  1.Introduceti ID-ul in casuta din rubrica -Deschide un ID-.<br> 2.Textul pe care l-ati salvat mai devreme va aparea in caseta de text de unde cititi aceste instructiuni.<br>III.Butonul -Copiaza- : Apasand acel buton, vi se va copia in CLIPBOARD📋 ce se afla in acel moment (ID-ul sau textul salvat) in caseta de text din care cititi aceste instructiuni. <br>IV.-Previzualizare-: Daca selectati acea casuta, textul introdus va aparea in rubrica de unde cititi aceste instructiuni. Aceasta functie este utila atunci cand introduceti TAG-uri HTML si doriti o previzualizare a ce va aparea la final.<br>VI.Butonul -Doar text- (coltul dreapta-sus): Apasand acel buton, fundalul se va transforma in negru si comenzile mentionate mai sus vor disparea lasand loc textului.<br> Aceasta actiune poate fi reversata numai daca reincarcati pagina.<br>V.Cum folosesc -Marime-?<br> 1.Introduceti marimea fontului textului dorita  in caseta -Marime-. Nu este nevoie sa mai apasati un alt buton, marimea fiind schimbata pe masura ce tastati."
   document.getElementById("res").innerHTML= xsd;
 }
 function rad(){
